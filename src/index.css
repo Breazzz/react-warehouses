@@ -5,9 +5,41 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Main {
+  display: flex;
+}
+
+.content{
+  background: tomato;
+}
+
+/*--------------------ОБНУЛЕНИЕ---------------------*/
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+h1,h2,h3,h4,p,ul,ol,li,figure,figcaption,blockquote,dl,dd {
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+/*---------------------------------------------------*/

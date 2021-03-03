@@ -1,0 +1,44 @@
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #222D32;
+  padding: 20px 0;
+  a {
+    color: white;
+    padding: 10px 70px 10px 15px;
+    background: #2C3B41;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: .1s;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: #746BE7;
+      opacity: 0;
+      transition: .1s;
+    }
+    .icon, span {
+      opacity: .5;
+    }
+    .icon {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    &.active {
+      background: #1A2226;
+      &:before{
+        opacity: 1;
+      }
+      .icon, span {
+        opacity: 1;
+      }
+    }
+  }
+}
