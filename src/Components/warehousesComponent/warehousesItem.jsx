@@ -5,6 +5,9 @@ import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 
 const WarehousesItem = () => {
+    const handleEdit = () => {
+        console.log('EDIT WAREHOUSE')
+    }
     return (
         <div className={styles.item}>
             <div className={styles.title}>
@@ -18,7 +21,7 @@ const WarehousesItem = () => {
                     <li>Капуста <span>9</span></li>
                 </ul>
             </div>
-            <div className={styles.bottom}>
+            <div className={styles.bottom} onClick={handleEdit}>
                 <EditOutlinedIcon className={styles.icon}/>Редактировать
             </div>
         </div>

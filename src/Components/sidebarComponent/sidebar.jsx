@@ -6,9 +6,14 @@ import WeekendOutlinedIcon from '@material-ui/icons/WeekendOutlined';
 
 
 function Sidebar() {
+    const checkActive = (match, location) => {
+        if(!location) return false;
+        const {pathname} = location;
+        return pathname === "/";
+    }
     return (
         <div className={styles.sidebar}>
-            <NavLink exact to="/" activeClassName={styles.active}>
+            <NavLink exact to="/" activeClassName={styles.active} isActive={checkActive}>
                 <StoreOutlinedIcon className={styles.icon}/><span>Склады</span>
             </NavLink>
             <NavLink exact to="/products" activeClassName={styles.active}>

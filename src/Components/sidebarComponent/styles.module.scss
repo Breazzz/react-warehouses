@@ -42,3 +42,22 @@
     }
   }
 }
+
+@media screen and (max-width: 520px) {
+  .sidebar {
+    a {
+      padding-right: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar {
+    a {
+      padding-right: 0;
+      span {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+.productsWrap {
+  margin-top: 20px;
+  width: 100%;
+  .productForm{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    .inputName{
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+    .inputSelect{
+      max-width: 227px;
+      width: 100%;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+    .inputNumber{
+      max-width: 100px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+    .buttonAdd{
+      height: 56px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      span {
+        display: flex;
+        align-items: center;
+      }
+      .btnIcon{
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.productsList{
+  margin-top: 20px;
+  width: 100%;
+  .productsItem {
+    width: 100%;
+  }
+}
+
+.table {
+  min-width: 550px;
+  overflow-y: auto;
+  width: 100%;
+  .tableHead {
+    .tableTitle {
+      * {
+        color: white;
+        background: #2C3B41;
+      }
+    }
+  }
+  .iconEdit {
+    color: #f39c12;
+    cursor: pointer;
+  }
+  .iconDelete {
+    color: #bd102d;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 710px){
+  .productForm{
+    flex-direction: column;
+    align-items: flex-start!important;
+    .inputName, .inputSelect, .inputNumber {
+      margin-right: 0!important;
+    }
+  }
+}
