@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import styles from './styles.module.scss'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import ProductsEditModal from "../Modals/productsEditModal";
 
 function createData(name, warehouse, quantity) {
     return { name, warehouse, quantity };
@@ -20,41 +21,48 @@ const rows = [
     createData('Приборная панель', 'Центр. рынок', 15),
 ];
 
-const handleEdit = () => {
-    console.log('EDIT PRODUCT')
-}
-
-const handleDelete = () => {
-    console.log('DELETE PRODUCT')
-}
-
 export default function ProductsTable() {
+    const [modalShow, setModalShow] = useState(false);
+
+    const handleEdit = () => {
+        setModalShow(true)
+    }
+
+    const handleDelete = () => {
+        console.log('DELETE PRODUCT')
+    }
     return (
-        <TableContainer component={Paper}>
-            <Table className={styles.table} aria-label="caption table">
-                <TableHead className={styles.tableHead}>
-                    <TableRow className={styles.tableTitle}>
-                        <TableCell>Наименование</TableCell>
-                        <TableCell align="center">Склад</TableCell>
-                        <TableCell align="center">Кол-во</TableCell>
-                        <TableCell align="right" />
-                        <TableCell align="right" />
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row) => (
-                        <TableRow key={row.name}>
-                            <TableCell component="th" scope="row">
-                                {row.name}
-                            </TableCell>
-                            <TableCell align="center">{row.warehouse}</TableCell>
-                            <TableCell align="center">{row.quantity}</TableCell>
-                            <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={handleEdit} /></TableCell>
-                            <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={handleDelete} /></TableCell>
+        <>
+            <ProductsEditModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+            />
+            <TableContainer component={Paper}>
+                <Table className={styles.table} aria-label="caption table">
+                    <TableHead className={styles.tableHead}>
+                        <TableRow className={styles.tableTitle}>
+                            <TableCell>Наименование</TableCell>
+                            <TableCell align="center">Склад</TableCell>
+                            <TableCell align="center">Кол-во</TableCell>
+                            <TableCell align="right" />
+                            <TableCell align="right" />
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <TableRow key={row.name}>
+                                <TableCell component="th" scope="row">
+                                    {row.name}
+                                </TableCell>
+                                <TableCell align="center">{row.warehouse}</TableCell>
+                                <TableCell align="center">{row.quantity}</TableCell>
+                                <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={handleEdit} /></TableCell>
+                                <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={handleDelete} /></TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </>
     );
 }

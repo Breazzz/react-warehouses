@@ -3,6 +3,7 @@ import {BrowserRouter} from "react-router-dom";
 import Sidebar from "./Components/sidebarComponent/sidebar";
 import Routes from "./Components/Basic/Routes";
 import Header from "./Components/headerComponent/header";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
