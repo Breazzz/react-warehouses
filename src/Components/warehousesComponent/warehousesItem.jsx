@@ -5,7 +5,7 @@ import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import WarehousesEditModal from "../Modals/warehousesEditModal";
 
-const WarehousesItem = () => {
+const WarehousesItem = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const handleEdit = () => {
         setModalShow(false)
@@ -18,14 +18,14 @@ const WarehousesItem = () => {
             />
             <div className={styles.item}>
                 <div className={styles.title}>
-                    <PlaylistAddCheckIcon className={styles.icon}/><span>ТЦ Мармелад</span>
+                    <PlaylistAddCheckIcon className={styles.icon}/><span>{props.name}</span>
                 </div>
                 <div className={styles.body}>
                     <span>Продукты:</span>
                     <ul>
-                        <li>Помидоры <span>18</span></li>
-                        <li>Огурцы <span>23</span></li>
-                        <li>Капуста <span>9</span></li>
+                        {props.products.map(({name, count}, index) => {
+                            return <li key={index}>{name} <span>{count}</span></li>
+                        })}
                     </ul>
                 </div>
                 <div className={styles.bottom} onClick={() => setModalShow(true)}>

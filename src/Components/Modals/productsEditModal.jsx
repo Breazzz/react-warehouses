@@ -24,9 +24,9 @@ export default function ProductsEditModal(props) {
                         label="Название"
                         type='text'
                         variant="outlined"
-                        className={styles.inputName}
+                        className={styles.inputNameModal}
                     />
-                    <FormControl variant="outlined" className={styles.inputSelect}>
+                    <FormControl variant="outlined" className={styles.inputSelectModal}>
                         <InputLabel id="demo-simple-select-outlined-label">Склад</InputLabel>
                         <Select
                             labelId="demo-simple-select-outlined-label"
@@ -43,7 +43,7 @@ export default function ProductsEditModal(props) {
                         label="Кол-во"
                         type='number'
                         variant="outlined"
-                        className={styles.inputNumber}
+                        className={styles.inputNumberModal}
                     />
                 </form>
             </Modal.Body>

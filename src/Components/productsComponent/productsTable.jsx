@@ -11,14 +11,22 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import ProductsEditModal from "../Modals/productsEditModal";
 
-function createData(name, warehouse, quantity) {
-    return { name, warehouse, quantity };
-}
-
-const rows = [
-    createData('Ремень ГРМ', 'ТЦ Мармелад', 32),
-    createData('Диски на акцент', 'Радуга', 7),
-    createData('Приборная панель', 'Центр. рынок', 15),
+const products = [
+    {
+        name: 'Ремень ГРМ',
+        warehouse: 'ТЦ Мармелад',
+        quantity: 32
+    },
+    {
+        name: 'Диски на акцент',
+        warehouse: 'Радуга',
+        quantity: 7
+    },
+    {
+        name: 'Приборная панель',
+        warehouse: 'Центр. рынок',
+        quantity: 15
+    }
 ];
 
 export default function ProductsTable() {
@@ -49,7 +57,7 @@ export default function ProductsTable() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {products.map((row) => (
                             <TableRow key={row.name}>
                                 <TableCell component="th" scope="row">
                                     {row.name}

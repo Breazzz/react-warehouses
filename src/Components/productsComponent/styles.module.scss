@@ -40,6 +40,34 @@
   }
 }
 
+.inputNameModal{
+  margin-right: 20px!important;
+  @media (max-width: 991px){
+    margin-bottom: 10px!important;
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+.inputSelectModal{
+  max-width: 227px;
+  width: 100%;
+  margin-right: 20px!important;
+  @media (max-width: 991px){
+    margin-bottom: 10px!important;
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+.inputNumberModal{
+  max-width: 100px;
+  margin-right: 20px!important;
+  @media (max-width: 991px){
+    margin-bottom: 10px!important;
+    max-width: 100% !important;
+    width: 100%;
+  }
+}
+
 .productsList{
   margin-top: 20px;
   width: 100%;
