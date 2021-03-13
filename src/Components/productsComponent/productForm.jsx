@@ -1,18 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import '../../Styles/Content.scss'
 import styles from './styles.module.scss'
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import {toast} from "react-toastify";
+import {useSelector} from "react-redux";
 
-const ProductsForm = (props) => {
+const ProductsForm = () => {
+    const products = useSelector(state => state.products)
     const [name, setName] = useState('');
     const [warehouse, setWarehouse] = useState('')
     const [quantity, setQuantity] = useState('')
 
     const handleAddProduct = () => {
-        if (name.length > 0 && warehouse > 0 && quantity.length > 0) {
-            props.products.push(
+        if (name.length > 0 && warehouse.length > 0 && quantity.length > 0) {
+            products.push(
                 {
                     name: name,
                     warehouse: warehouse,
@@ -48,9 +50,9 @@ const ProductsForm = (props) => {
                     onChange={(e) => setWarehouse(e.target.value)}
                     label="Age"
                 >
-                    <MenuItem value={10}>ТЦ Мармелад</MenuItem>
-                    <MenuItem value={20}>Радуга</MenuItem>
-                    <MenuItem value={30}>Центр. рынок</MenuItem>
+                    <MenuItem value={'ТЦ Мармелад'}>ТЦ Мармелад</MenuItem>
+                    <MenuItem value={'Радуга'}>Радуга</MenuItem>
+                    <MenuItem value={'Центр. рынок'}>Центр. рынок</MenuItem>
                 </Select>
             </FormControl>
             <TextField

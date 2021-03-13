@@ -10,8 +10,13 @@ import styles from './styles.module.scss'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import ProductsEditModal from "../Modals/productsEditModal";
+import {toast} from "react-toastify";
+import {useSelector} from "react-redux";
 
-export default function ProductsTable(props) {
+export default function ProductsTable() {
+
+    const products = useSelector(state => state.products)
+
     const [modalShow, setModalShow] = useState(false);
 
     const handleEdit = () => {
@@ -19,7 +24,7 @@ export default function ProductsTable(props) {
     }
 
     const handleDelete = () => {
-        console.log('DELETE PRODUCT')
+        toast.dark('Продукт удален')
     }
     return (
         <>
@@ -39,7 +44,7 @@ export default function ProductsTable(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.products.map((row) => (
+                        {products.map((row) => (
                             <TableRow key={row.name}>
                                 <TableCell component="th" scope="row">
                                     {row.name}

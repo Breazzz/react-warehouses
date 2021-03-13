@@ -1,9 +1,9 @@
 import React from "react";
 import Warehouses from "../Components/warehousesComponent/warehouses";
 
-const WarehousesPage = (props) => {
+const WarehousesPage = () => {
     return (
-        <Warehouses warehouses={props.warehouses} />
+        <Warehouses />
     )
 }
 

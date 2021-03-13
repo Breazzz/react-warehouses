@@ -5,12 +5,14 @@ import styles from "../productsComponent/styles.module.scss";
 import {TextField} from "@material-ui/core";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import {useSelector} from "react-redux";
 
 export default function WarehousesAddModal(props) {
+    const warehouses = useSelector(state => state.warehouses)
     const [name, setName] = useState('');
     const handleAdd = () => {
         if (name.length > 0) {
-            props.warehouses.push({
+            warehouses.push({
                 name: name,
                 products: []
             })
