@@ -11,25 +11,7 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import ProductsEditModal from "../Modals/productsEditModal";
 
-const products = [
-    {
-        name: 'Ремень ГРМ',
-        warehouse: 'ТЦ Мармелад',
-        quantity: 32
-    },
-    {
-        name: 'Диски на акцент',
-        warehouse: 'Радуга',
-        quantity: 7
-    },
-    {
-        name: 'Приборная панель',
-        warehouse: 'Центр. рынок',
-        quantity: 15
-    }
-];
-
-export default function ProductsTable() {
+export default function ProductsTable(props) {
     const [modalShow, setModalShow] = useState(false);
 
     const handleEdit = () => {
@@ -57,7 +39,7 @@ export default function ProductsTable() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {products.map((row) => (
+                        {props.products.map((row) => (
                             <TableRow key={row.name}>
                                 <TableCell component="th" scope="row">
                                     {row.name}

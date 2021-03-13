@@ -3,14 +3,14 @@ import {Route, Switch} from "react-router-dom";
 import ProductsPage from "../../Pages/ProductsPage";
 import WarehousesPage from "../../Pages/WarehousesPage";
 
-const Routes = () => {
+const Routes = (props) => {
     return (
         <Switch>
             <Route path="/products">
-                <ProductsPage />
+                <ProductsPage products={props.products} />
             </Route>
             <Route path="/">
-                <WarehousesPage />
+                <WarehousesPage warehouses={props.warehouses} />
             </Route>
         </Switch>
     )

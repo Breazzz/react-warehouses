@@ -4,14 +4,14 @@ import styles from './styles.module.scss'
 import ProductsForm from "./productForm";
 import ProductsTable from "./productsTable";
 
-const Products = () => {
+const Products = (props) => {
     return (
         <div className='content'>
             <h2>Продукты</h2>
             <div className={styles.productsWrap}>
-               <ProductsForm />
+               <ProductsForm products={props.products} />
                <div className={styles.productsList}>
-                   <ProductsTable />
+                   <ProductsTable products={props.products} />
                </div>
             </div>
         </div>

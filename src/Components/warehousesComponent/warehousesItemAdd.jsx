@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import WarehousesAddModal from "../Modals/warehousesAddModal";
 
-const WarehousesItemAdd = () => {
+const WarehousesItemAdd = (props) => {
     const [modalShow, setModalShow] = useState(false);
     return (
         <>
@@ -15,6 +15,7 @@ const WarehousesItemAdd = () => {
             <WarehousesAddModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+                warehouses={props.warehouses}
             />
         </>
     )
