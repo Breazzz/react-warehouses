@@ -9,19 +9,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {addWarehouses} from "../../Redux/actions/warehouses";
 
 export default function WarehousesAddModal(props) {
-    const warehouses = useSelector(state => state.warehouses)
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const [name, setName] = useState('');
     const handleAdd = () => {
         if (name.length > 0) {
-            // dispatch(addWarehouses({
-            //     name: name,
-            //     products: []
-            // }))
-            warehouses.push({
+            dispatch(addWarehouses({
                 name: name,
                 products: []
-            })
+            }))
             toast.success('Склад успешно добавлен')
             setName('')
             props.onHide()
