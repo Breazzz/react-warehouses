@@ -63,7 +63,7 @@ export default function warehouses(state = initialState, action){
                 items: action.payload,
             }
         case 'ADD_WAREHOUSES':
-            return state.push(action.value)
+            return state.push(action.payload)
         case 'DELETE_WAREHOUSES':
             return state.filter(warehouse => warehouse.id !== action.value.id)
         default:
