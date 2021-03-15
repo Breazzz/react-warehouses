@@ -26,6 +26,7 @@ export default function ProductsTable() {
     const handleDelete = () => {
         toast.dark('Продукт удален')
     }
+
     return (
         <>
             <ProductsEditModal

@@ -3,6 +3,14 @@
   width: 100%;
   padding: 15px 20px;
   color: white;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  h3 {
+    @media (max-width: 400px){
+      font-size: 21px;
+    }
+  }
   h3 span {
     opacity: .4;
   }

@@ -1,4 +1,4 @@
-const initialState = [
+const warehousesArr = [
     {
         name: 'ТЦ Мармелад',
         id: 1,
@@ -54,6 +54,13 @@ const initialState = [
         ]
     },
 ]
+
+if(!localStorage.getItem('warehouses')){
+    localStorage.setItem('warehouses', JSON.stringify(warehousesArr))
+}
+
+const initialState = JSON.parse(localStorage.getItem('warehouses'))
+
 
 export default function warehouses(state = initialState, action){
     switch (action.type) {

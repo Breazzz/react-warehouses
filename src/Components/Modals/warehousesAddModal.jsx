@@ -7,19 +7,24 @@ import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import {useDispatch, useSelector} from "react-redux";
 import {addWarehouses} from "../../Redux/actions/warehouses";
+import warehouses from "../../Redux/reducers/warehouses";
 
 export default function WarehousesAddModal(props) {
     const dispatch = useDispatch()
+    const warehouses = useSelector(state => state.warehouses)
     const [name, setName] = useState('');
+    const newWarehouse = {
+        name: name,
+        products: []
+    }
     const handleAdd = () => {
         if (name.length > 0) {
-            dispatch(addWarehouses({
-                name: name,
-                products: []
-            }))
+            dispatch(addWarehouses(newWarehouse))
             toast.success('Склад успешно добавлен')
             setName('')
             props.onHide()
+            warehouses.push(newWarehouse)
+            localStorage.getItem('warehouses') && localStorage.setItem('warehouses', JSON.stringify(warehouses))
         } else {
             toast.error('Введите имя склада!');
         }

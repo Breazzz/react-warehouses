@@ -4,27 +4,30 @@ import styles from './styles.module.scss'
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import {toast} from "react-toastify";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {addProducts} from "../../Redux/actions/products";
 
 const ProductsForm = () => {
-    const products = useSelector(state => state.products)
     const [name, setName] = useState('');
     const [warehouse, setWarehouse] = useState('')
     const [quantity, setQuantity] = useState('')
+    const dispatch = useDispatch();
+    const products = useSelector(state => state.products)
+    const newProduct = {
+        name: name,
+        warehouse: warehouse,
+        quantity: quantity
+    }
 
     const handleAddProduct = () => {
-        if (name.length > 0 && warehouse.length > 0 && quantity.length > 0) {
-            products.push(
-                {
-                    name: name,
-                    warehouse: warehouse,
-                    quantity: quantity
-                }
-            )
+        if (name.length > 0 && warehouse.length > 0 && quantity > 0) {
+            dispatch(addProducts(newProduct))
             setName('');
             setWarehouse('');
             setQuantity('');
             toast.success('Продукт успешно добавлен')
+            products.push(newProduct)
+            localStorage.getItem('products') && localStorage.setItem('products', JSON.stringify(products))
         } else {
             toast.error('Заполните все поля')
         }

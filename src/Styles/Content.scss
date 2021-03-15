@@ -2,6 +2,9 @@
   background: #ECF0F5;
   padding: 15px 20px;
   width: 100%;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+
   h2 span {
     opacity: .2;
     font-size: 14px;

@@ -1,4 +1,4 @@
-const initialState = [
+const productsArr = [
     {
         id: 1,
         name: 'Ремень ГРМ',
@@ -19,6 +19,12 @@ const initialState = [
     }
 ];
 
+if(!localStorage.getItem('products')){
+    localStorage.setItem('products', JSON.stringify(productsArr))
+}
+
+const initialState = JSON.parse(localStorage.getItem('products'))
+
 export default function products(state = initialState, action){
     switch (action.type) {
         case 'SET_PRODUCTS':
@@ -26,8 +32,8 @@ export default function products(state = initialState, action){
                 ...state,
                 items: action.payload,
             }
-        case 'ADD_PRODUCT':
-            return state.push(action.value)
+        case 'ADD_PRODUCTS':
+            return [...state, action.payload]
         case 'DELETE_PRODUCT':
             return state.filter(product => product.id !== action.value.id)
         default:
