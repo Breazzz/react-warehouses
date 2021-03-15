@@ -10,14 +10,6 @@ export default function ProductsEditModal(props) {
     const [warehouse, setWarehouse] = useState('')
     const [quantity, setQuantity] = useState('')
 
-    const handleDeleteProduct = () => {
-        setName('');
-        setWarehouse('');
-        setQuantity('');
-        toast.dark('Продукт удален')
-        props.onHide();
-    }
-
     const handleSaveProduct = () => {
         if (name.length > 0 && warehouse > 0 && quantity.length > 0) {
             setName('');
@@ -39,7 +31,7 @@ export default function ProductsEditModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Ремень ГРМ
+                    {props.productTitle}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -80,7 +72,6 @@ export default function ProductsEditModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide} variant="secondary">Закрыть</Button>
-                <Button onClick={handleDeleteProduct} variant="danger">Удалить</Button>
                 <Button onClick={handleSaveProduct} variant="primary">Сохранить</Button>
             </Modal.Footer>
         </Modal>

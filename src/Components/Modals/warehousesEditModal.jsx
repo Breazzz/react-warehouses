@@ -3,8 +3,17 @@ import {Button, Modal} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../productsComponent/styles.module.scss";
 import {TextField} from "@material-ui/core";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteWarehouses} from "../../Redux/actions/warehouses";
+import {toast} from "react-toastify";
 
 export default function WarehousesEditModal(props) {
+    const dispatch = useDispatch();
+    const deleteWarehouse = () => {
+        dispatch(deleteWarehouses(props))
+        toast.dark(`Склад "` + props.name + `" удалён`)
+        props.onHide()
+    }
     return (
         <Modal
             {...props}
@@ -14,7 +23,7 @@ export default function WarehousesEditModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    (ТЦ Мармелад) Изменить имя или удалить склад
+                    <span className="modal-title-name">{props.name}</span> <span className="modal-title-subtitle">(изменить или удалить склад)</span>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -28,7 +37,7 @@ export default function WarehousesEditModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide} variant="secondary">Закрыть</Button>
-                <Button onClick={props.onHide} variant="danger">Удалить</Button>
+                <Button onClick={deleteWarehouse} variant="danger">Удалить</Button>
                 <Button onClick={props.onHide} variant="primary">Сохранить</Button>
             </Modal.Footer>
         </Modal>

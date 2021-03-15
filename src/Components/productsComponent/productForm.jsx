@@ -9,6 +9,7 @@ import {addProducts} from "../../Redux/actions/products";
 
 const ProductsForm = () => {
     const [name, setName] = useState('');
+    const warehouses = useSelector(state => state.warehouses)
     const [warehouse, setWarehouse] = useState('')
     const [quantity, setQuantity] = useState('')
     const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const ProductsForm = () => {
     const newProduct = {
         name: name,
         warehouse: warehouse,
-        quantity: quantity
+        quantity: +quantity
     }
 
     const handleAddProduct = () => {
@@ -53,9 +54,9 @@ const ProductsForm = () => {
                     onChange={(e) => setWarehouse(e.target.value)}
                     label="Age"
                 >
-                    <MenuItem value={'ТЦ Мармелад'}>ТЦ Мармелад</MenuItem>
-                    <MenuItem value={'Радуга'}>Радуга</MenuItem>
-                    <MenuItem value={'Центр. рынок'}>Центр. рынок</MenuItem>
+                    {warehouses.map(({name}, index) => (
+                        <MenuItem value={name} key={index}>{name}</MenuItem>
+                    ))}
                 </Select>
             </FormControl>
             <TextField
@@ -63,6 +64,9 @@ const ProductsForm = () => {
                 label="Кол-во"
                 type='number'
                 variant="outlined"
+                onInput = {(e) =>{
+                    e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,2)
+                }}
                 className={styles.inputNumber}
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}

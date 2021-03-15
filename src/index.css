@@ -21,6 +21,15 @@ code {
   background: tomato;
 }
 
+.modal-title-name{
+  color: #00A65A;
+  font-weight: 900;
+}
+
+.modal-title-subtitle{
+  font-size: 14px;
+}
+
 /*--------------------ОБНУЛЕНИЕ---------------------*/
 html, body{
   margin: 0;

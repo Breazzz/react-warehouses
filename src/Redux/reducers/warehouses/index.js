@@ -73,7 +73,7 @@ export default function warehouses(state = initialState, action){
             // return state.push(action.payload) // Мутирование
             return [...state, action.payload] // Новое состояние
         case 'DELETE_WAREHOUSES':
-            return state.filter(warehouse => warehouse.id !== action.value.id)
+            return state.filter(warehouse => warehouse.name !== action.payload.name)
         default:
             return state
     }

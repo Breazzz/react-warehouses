@@ -11,20 +11,25 @@ import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import ProductsEditModal from "../Modals/productsEditModal";
 import {toast} from "react-toastify";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteProduct} from "../../Redux/actions/products";
 
 export default function ProductsTable() {
+    const dispatch = useDispatch();
 
     const products = useSelector(state => state.products)
+    const [productTitle, setProductTitle] = useState('');
 
     const [modalShow, setModalShow] = useState(false);
 
-    const handleEdit = () => {
+    const handleEdit = (name) => {
         setModalShow(true)
+        setProductTitle(name)
     }
 
-    const handleDelete = () => {
-        toast.dark('Продукт удален')
+    const handleDelete = (name) => {
+        dispatch(deleteProduct(name))
+        toast.dark(`Товар "` + name + `" удалён`)
     }
 
     return (
@@ -32,6 +37,7 @@ export default function ProductsTable() {
             <ProductsEditModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+                productTitle={productTitle}
             />
             <TableContainer component={Paper}>
                 <Table className={styles.table} aria-label="caption table">
@@ -52,8 +58,8 @@ export default function ProductsTable() {
                                 </TableCell>
                                 <TableCell align="center">{row.warehouse}</TableCell>
                                 <TableCell align="center">{row.quantity}</TableCell>
-                                <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={handleEdit} /></TableCell>
-                                <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={handleDelete} /></TableCell>
+                                <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={() => handleEdit(row.name)} /></TableCell>
+                                <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={() => handleDelete(row.name)} /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

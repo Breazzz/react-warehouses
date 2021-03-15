@@ -4,30 +4,40 @@ import styles from './styles.module.scss'
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import WarehousesEditModal from "../Modals/warehousesEditModal";
+import {useSelector} from "react-redux";
 
 const WarehousesItem = (props) => {
     const [modalShow, setModalShow] = useState(false);
     const handleEdit = () => {
         setModalShow(false)
     }
+    const products = useSelector(item => item.products)
+    const filteredProducts = products.filter(elem => elem.warehouse === props.name);
     return (
         <>
             <WarehousesEditModal
                 show={modalShow}
                 onHide={handleEdit}
+                name={props.name}
             />
             <div className={styles.item}>
                 <div className={styles.title}>
                     <PlaylistAddCheckIcon className={styles.icon}/><span>{props.name}</span>
                 </div>
-                <div className={styles.body}>
-                    <span>Продукты:</span>
-                    <ul>
-                        {props.products.map(({name, count}, index) => {
-                            return <li key={index}>{name} <span>{count}</span></li>
-                        })}
-                    </ul>
-                </div>
+                {filteredProducts.length ? (
+                    <div className={styles.body}>
+                        <span>Товары:</span>
+                        <ul>
+                            {filteredProducts.length ? filteredProducts.map(({name, quantity}, index) => {
+                                return <li key={index}>{name} <span>{quantity}</span></li>
+                            }) : <span className={styles.empty}>Ждет поступления</span>}
+                        </ul>
+                    </div>
+                ) : (
+                    <div className={styles.body}>
+                        <span className={styles.empty}>Товаров нет</span>
+                    </div>
+                )}
                 <div className={styles.bottom} onClick={() => setModalShow(true)}>
                     <EditOutlinedIcon className={styles.icon}/>Редактировать
                 </div>
