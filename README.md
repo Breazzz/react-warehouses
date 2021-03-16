@@ -1,8 +1,23 @@
-# Getting Started with Create React App
+# Welcome to React Warehouses™️
+### This project allows:
+######✔️ View warehouses list
+######✔️ View products list
+######✔️ Add a new warehouse
+######✔️ Add a new product
+######✔️ Link a product to a warehouse
+######✔️ Both sections can be edited
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Technologies:
+![ReactJs](https://img.shields.io/badge/-ReactJs-090909?style=for-the-badge&logo=React)
+![Redux](https://img.shields.io/badge/-Redux-090909?style=for-the-badge&logo=Redux)
+![JavaScript](https://img.shields.io/badge/-JavaScript-090909?style=for-the-badge&logo=JavaScript)
+![HTML](https://img.shields.io/badge/-HTML-090909?style=for-the-badge&logo=html5)
+![CSS](https://img.shields.io/badge/-CSS-090909?style=for-the-badge&logo=css3)
+____
+➡️ [**DEMO**](https://breazzz.github.io/react-warehouses/) ⬅️
+____
 
-## Available Scripts
+![Alt-текст](https://i2.paste.pics/bb92564856ac5d93ff0e95227c48c1e1.png "Орк")
 
 In the project directory, you can run:
 
