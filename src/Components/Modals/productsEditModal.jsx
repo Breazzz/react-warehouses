@@ -34,7 +34,7 @@ export default function ProductsEditModal(props) {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {props.productTitle}
+                    <span className="modal-title-name">{props.productTitle}</span> <span className="modal-title-subtitle">({props.quantity} шт.)</span>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -64,7 +64,7 @@ export default function ProductsEditModal(props) {
                     </FormControl>
                     <TextField
                         id="standard-basic"
-                        label={"Кол-во (всего " + props.quantity + " шт.)"}
+                        label="Кол-во"
                         type='number'
                         variant="outlined"
                         className={styles.inputNumberModal}
