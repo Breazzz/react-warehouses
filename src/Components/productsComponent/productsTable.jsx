@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -19,12 +19,15 @@ export default function ProductsTable() {
 
     const products = useSelector(state => state.products)
     const [productTitle, setProductTitle] = useState('');
+    const [quantity, setQuantity] = useState(0)
 
     const [modalShow, setModalShow] = useState(false);
+    const warehouses = useSelector(state => state.warehouses)
 
     const handleEdit = (name) => {
         setModalShow(true)
-        setProductTitle(name)
+        setProductTitle(name.name)
+        setQuantity(name.quantity)
     }
 
     const handleDelete = (name) => {
@@ -32,12 +35,19 @@ export default function ProductsTable() {
         toast.dark(`Товар "` + name + `" удалён`)
     }
 
+    useEffect(() => {
+        if(localStorage.getItem('products')){
+            localStorage.setItem('products', JSON.stringify(products))
+        }
+    }, [products])
+
     return (
         <>
             <ProductsEditModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
                 productTitle={productTitle}
+                quantity={quantity}
             />
             <TableContainer component={Paper}>
                 <Table className={styles.table} aria-label="caption table">
@@ -56,9 +66,9 @@ export default function ProductsTable() {
                                 <TableCell component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="center">{row.warehouse}</TableCell>
+                                <TableCell align="center">{warehouses.map(item => item.name === row.warehouse && row.warehouse)}</TableCell>
                                 <TableCell align="center">{row.quantity}</TableCell>
-                                <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={() => handleEdit(row.name)} /></TableCell>
+                                <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={() => handleEdit(row)} /></TableCell>
                                 <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={() => handleDelete(row.name)} /></TableCell>
                             </TableRow>
                         ))}

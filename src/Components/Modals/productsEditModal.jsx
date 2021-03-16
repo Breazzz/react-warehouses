@@ -4,11 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../productsComponent/styles.module.scss";
 import {FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
 import {toast} from "react-toastify";
+import {useSelector} from "react-redux";
 
 export default function ProductsEditModal(props) {
     const [name, setName] = useState('');
     const [warehouse, setWarehouse] = useState('')
     const [quantity, setQuantity] = useState('')
+
+    const warehouses = useSelector(state => state.warehouses)
 
     const handleSaveProduct = () => {
         if (name.length > 0 && warehouse > 0 && quantity.length > 0) {
@@ -54,14 +57,14 @@ export default function ProductsEditModal(props) {
                             value={warehouse}
                             onChange={(e) => setWarehouse(e.target.value)}
                         >
-                            <MenuItem value={10}>ТЦ Мармелад</MenuItem>
-                            <MenuItem value={20}>Радуга</MenuItem>
-                            <MenuItem value={30}>Центр. рынок</MenuItem>
+                            {warehouses.map(({name}, index) => (
+                                <MenuItem value={name} key={index}>{name}</MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
                     <TextField
                         id="standard-basic"
-                        label="Кол-во"
+                        label={"Кол-во (всего " + props.quantity + " шт.)"}
                         type='number'
                         variant="outlined"
                         className={styles.inputNumberModal}

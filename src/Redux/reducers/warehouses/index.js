@@ -1,58 +1,16 @@
 const warehousesArr = [
     {
         name: 'ТЦ Мармелад',
-        id: 1,
-        products: [
-            {
-                name: 'Сникерс',
-                count: 23
-            },
-            {
-                name: 'Баунти',
-                count: 8
-            },
-            {
-                name: 'Натс',
-                count: 19
-            },
-        ]
+        products: []
     },
     {
         name: 'Центр. рынок',
-        id: 2,
-        products: [
-            {
-                name: 'Помидоры',
-                count: 6
-            },
-            {
-                name: 'Огурцы',
-                count: 1
-            },
-            {
-                name: 'Хлеб',
-                count: 13
-            },
-            {
-                name: 'Фунчоза',
-                count: 23
-            },
-        ]
+        products: []
     },
     {
         name: 'Радуга',
-        id: 3,
-        products: [
-            {
-                name: 'Бензонасос на акцент',
-                count: 1
-            },
-            {
-                name: 'Стартер',
-                count: 9
-            },
-        ]
-    },
+        products: []
+    }
 ]
 
 if(!localStorage.getItem('warehouses')){
@@ -74,6 +32,8 @@ export default function warehouses(state = initialState, action){
             return [...state, action.payload] // Новое состояние
         case 'DELETE_WAREHOUSES':
             return state.filter(warehouse => warehouse.name !== action.payload.name)
+        case 'CHANGE_WAREHOUSES':
+            return state
         default:
             return state
     }

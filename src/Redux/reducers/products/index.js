@@ -62,7 +62,7 @@ export default function products(state = initialState, action){
         case 'ADD_PRODUCTS':
             return [...state, action.payload]
         case 'DELETE_PRODUCT':
-            return state.filter(product => product.name !== action.payload.name)
+            return state.filter(product => product.name !== action.payload)
         default:
             return state
     }

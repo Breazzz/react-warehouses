@@ -8,7 +8,12 @@ export const addWarehouses = (name) => ({
     payload: name
 })
 
-export const deleteWarehouses = (id) => ({
+export const changeWarehouses = (value) => ({
+    type: 'CHANGE_WAREHOUSES',
+    payload: value
+})
+
+export const deleteWarehouses = (name) => ({
     type: 'DELETE_WAREHOUSES',
-    payload: id
+    payload: name
 })
