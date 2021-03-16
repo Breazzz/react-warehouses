@@ -1,4 +1,4 @@
-# Welcome to React Warehouses™️
+# ⚡ Welcome to React Warehouses ⚡
 ### This project allows:
 ###### ✔️ View warehouses list
 ###### ✔️ View products list
