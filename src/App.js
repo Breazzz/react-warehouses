@@ -9,7 +9,7 @@ import {ToastContainer} from "react-toastify";
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/react-warehouses">
             <ToastContainer
                 position="top-right"
                 autoClose={3000}

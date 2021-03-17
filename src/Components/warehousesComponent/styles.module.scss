@@ -148,6 +148,62 @@
   }
 }
 
+.modalList{
+  background: #ECF0F5;
+  border-radius: 15px;
+  box-shadow: 0 0 7px rgba(0,0,0,.35);
+  ul {
+    margin-top: 15px;
+    padding: 10px 20px 10px 25px;
+    li {
+      list-style: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+      //justify-content: space-between;
+      .iconDelete{
+        background: #9ea3a9;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        color: white;
+        cursor: pointer;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: .2s;
+        &:hover{
+          background: #bd102d;
+        }
+      }
+      span{
+        font-size: 9px;
+        font-weight: 700;
+        background: #f39c12;
+        color: white;
+        width: 15px;
+        height: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        text-align: center;
+        margin-left: 15px;
+      }
+      &:before{
+        content: '';
+        width: 7px;
+        height: 2px;
+        background: #00A65A;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -12px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 460px) {
   .warehousesWrap {
     .item {

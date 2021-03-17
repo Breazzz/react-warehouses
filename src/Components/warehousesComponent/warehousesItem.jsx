@@ -19,6 +19,7 @@ const WarehousesItem = (props) => {
                 show={modalShow}
                 onHide={handleEdit}
                 name={props.name}
+                products={filteredProducts}
             />
             <div className={styles.item}>
                 <div className={styles.title}>
@@ -28,9 +29,9 @@ const WarehousesItem = (props) => {
                     <div className={styles.body}>
                         <span>Товары:</span>
                         <ul>
-                            {filteredProducts.length ? filteredProducts.map(({name, quantity}, index) => {
+                            {filteredProducts.map(({name, quantity}, index) => {
                                 return <li key={index}>{name} <span>{quantity}</span></li>
-                            }) : <span className={styles.empty}>Ждет поступления</span>}
+                            })}
                         </ul>
                     </div>
                 ) : (
