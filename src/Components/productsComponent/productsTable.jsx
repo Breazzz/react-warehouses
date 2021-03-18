@@ -13,6 +13,7 @@ import ProductsEditModal from "../Modals/productsEditModal";
 import {toast} from "react-toastify";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteProduct} from "../../Redux/actions/products";
+import {addProductsRemainder} from "../../Redux/actions/productsRemainder";
 
 export default function ProductsTable() {
     const dispatch = useDispatch();
@@ -30,8 +31,13 @@ export default function ProductsTable() {
         setQuantity(name.quantity)
     }
 
-    const handleDelete = (name) => {
+    const handleDelete = (name, quantity) => {
         dispatch(deleteProduct(name))
+        const productRemainder = {
+            name: name,
+            quantity: quantity
+        }
+        dispatch(addProductsRemainder(productRemainder))
         toast.dark(`Товар "` + name + `" удалён`)
     }
 
@@ -69,7 +75,7 @@ export default function ProductsTable() {
                                 <TableCell align="center">{warehouses.map(item => item.name === row.warehouse && row.warehouse)}</TableCell>
                                 <TableCell align="center">{row.quantity}</TableCell>
                                 <TableCell align="right"><EditOutlinedIcon className={styles.iconEdit} onClick={() => handleEdit(row)} /></TableCell>
-                                <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={() => handleDelete(row.name)} /></TableCell>
+                                <TableCell align="right"><CloseOutlinedIcon className={styles.iconDelete} onClick={() => handleDelete(row.name, row.quantity)} /></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

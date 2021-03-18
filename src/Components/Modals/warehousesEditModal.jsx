@@ -10,6 +10,7 @@ import {changeWarehouses} from "../../Redux/actions/warehouses";
 import {toast} from "react-toastify";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 import {deleteProduct} from "../../Redux/actions/products";
+import {addProductsRemainder} from "../../Redux/actions/productsRemainder";
 
 export default function WarehousesEditModal(props) {
     const dispatch = useDispatch();
@@ -31,9 +32,14 @@ export default function WarehousesEditModal(props) {
         // }
     }
     
-    const handleDeleteProduct = (product) => {
-        dispatch(deleteProduct(product))
-        toast.dark(`Товар "` + product + `" удалён`)
+    const handleDeleteProduct = (name, quantity) => {
+        dispatch(deleteProduct(name))
+        const productRemainder = {
+            name: name,
+            quantity: quantity
+        }
+        dispatch(addProductsRemainder(productRemainder))
+        toast.dark(`Товар "` + name + `" удалён`)
     }
 
     useEffect(() => {
@@ -73,7 +79,7 @@ export default function WarehousesEditModal(props) {
             <div className={newStyles.modalList}>
                 <ul>
                     {props.products.length ? props.products.map(({name, quantity}, index) => {
-                        return <li key={index}>{name} <span>{quantity}</span> <CloseOutlinedIcon className={newStyles.iconDelete} onClick={() => handleDeleteProduct(name)} /></li>
+                        return <li key={index}>{name} <span>{quantity}</span> <CloseOutlinedIcon className={newStyles.iconDelete} onClick={() => handleDeleteProduct(name, quantity)} /></li>
                     }) : <span className={newStyles.empty}>Ждет поступления</span>}
                 </ul>
             </div>

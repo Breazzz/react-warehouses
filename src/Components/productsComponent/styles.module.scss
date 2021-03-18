@@ -79,6 +79,10 @@
   }
 }
 
+.remainderTitle {
+  margin-top: 20px;
+}
+
 .table {
   min-width: 550px;
   overflow-y: auto;
@@ -98,6 +102,9 @@
   .iconDelete {
     color: #bd102d;
     cursor: pointer;
+  }
+  &.tableRemainder {
+    //margin-top: 20px;
   }
 }
 
