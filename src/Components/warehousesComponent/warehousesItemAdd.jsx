@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import '../../Styles/Content.scss'
-import styles from './styles.module.scss'
+import React, { useState } from "react";
 import AddCircleRoundedIcon from '@material-ui/icons/AddCircleRounded';
 import WarehousesAddModal from "../Modals/warehousesAddModal";
+import '../../Styles/Content.scss'
+import styles from './styles.module.scss'
 
 const WarehousesItemAdd = () => {
     const [modalShow, setModalShow] = useState(false);

@@ -1,10 +1,10 @@
-import React, {useState} from "react";
-import '../../Styles/Content.scss'
-import styles from './styles.module.scss'
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import WarehousesEditModal from "../Modals/warehousesEditModal";
-import {useSelector} from "react-redux";
+import '../../Styles/Content.scss'
+import styles from './styles.module.scss'
 
 const WarehousesItem = (props) => {
     const [modalShow, setModalShow] = useState(false);

@@ -1,10 +1,10 @@
 import React from "react";
-import '../../Styles/Content.scss'
-import styles from './styles.module.scss'
+import {useSelector} from "react-redux";
 import ProductsForm from "./productForm";
 import ProductsTable from "./productsTable";
 import ProductsRemainder from "./productsRemainder";
-import {useSelector} from "react-redux";
+import '../../Styles/Content.scss'
+import styles from './styles.module.scss'
 
 const Products = () => {
     const remainder = useSelector(state => state.remainder)

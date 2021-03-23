@@ -1,11 +1,18 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import {
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField
+} from "@material-ui/core";
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import { addProducts } from "../../Redux/actions/products";
 import '../../Styles/Content.scss'
 import styles from './styles.module.scss'
-import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
-import {toast} from "react-toastify";
-import {useDispatch, useSelector} from "react-redux";
-import {addProducts} from "../../Redux/actions/products";
 
 const ProductsForm = () => {
     const [name, setName] = useState('');

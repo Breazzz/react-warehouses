@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import {Button, Modal} from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import {useDispatch, useSelector } from "react-redux";
+import { TextField } from "@material-ui/core";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+import { addWarehouses } from "../../Redux/actions/warehouses";
+import warehouses from "../../Redux/reducers/warehouses";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../productsComponent/styles.module.scss";
-import {TextField} from "@material-ui/core";
-import {toast} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
-import {useDispatch, useSelector} from "react-redux";
-import {addWarehouses} from "../../Redux/actions/warehouses";
-import warehouses from "../../Redux/reducers/warehouses";
 
 export default function WarehousesAddModal(props) {
     const dispatch = useDispatch()

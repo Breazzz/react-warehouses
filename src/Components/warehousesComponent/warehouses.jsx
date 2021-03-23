@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
-import '../../Styles/Content.scss'
-import styles from './styles.module.scss'
+import React from "react";
+import { useSelector } from "react-redux";
 import WarehousesItem from "./warehousesItem";
 import WarehousesItemAdd from "./warehousesItemAdd";
-import {useSelector} from "react-redux";
+import '../../Styles/Content.scss'
+import styles from './styles.module.scss'
 
 const Warehouses = () => {
     const warehouses = useSelector(state => state.warehouses)

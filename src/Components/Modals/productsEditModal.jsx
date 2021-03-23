@@ -1,10 +1,16 @@
-import React, {useState} from "react";
-import {Button, Modal} from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import {
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField
+} from "@material-ui/core";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from "../productsComponent/styles.module.scss";
-import {FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
-import {toast} from "react-toastify";
-import {useSelector} from "react-redux";
 
 export default function ProductsEditModal(props) {
     const [name, setName] = useState('');

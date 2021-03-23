@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {toast} from "react-toastify";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -6,11 +8,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import styles from './styles.module.scss'
+import { deleteProductsRemainder } from "../../Redux/actions/productsRemainder";
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
-import {toast} from "react-toastify";
-import {useDispatch, useSelector} from "react-redux";
-import {deleteProductsRemainder} from "../../Redux/actions/productsRemainder";
+import styles from './styles.module.scss'
 
 export default function ProductsRemainder() {
     const dispatch = useDispatch();

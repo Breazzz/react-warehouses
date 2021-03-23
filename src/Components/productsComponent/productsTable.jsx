@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -6,14 +8,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import styles from './styles.module.scss'
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 import ProductsEditModal from "../Modals/productsEditModal";
-import {toast} from "react-toastify";
-import {useDispatch, useSelector} from "react-redux";
 import {deleteProduct} from "../../Redux/actions/products";
 import {addProductsRemainder} from "../../Redux/actions/productsRemainder";
+import styles from './styles.module.scss'
 
 export default function ProductsTable() {
     const dispatch = useDispatch();

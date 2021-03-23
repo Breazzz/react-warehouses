@@ -1,8 +1,8 @@
 import React from 'react'
 import {NavLink} from "react-router-dom";
-import styles from './styles.module.scss'
 import StoreOutlinedIcon from '@material-ui/icons/StoreOutlined';
 import WeekendOutlinedIcon from '@material-ui/icons/WeekendOutlined';
+import styles from './styles.module.scss'
 
 
 function Sidebar() {
